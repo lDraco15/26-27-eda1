@@ -13,4 +13,8 @@ public class Fila {
     public void recibePersona(int personaRecibida) {
         numeroPersonas = numeroPersonas + personaRecibida;
     }
+
+    public void eliminaPersona(int personaEliminada) {
+        numeroPersonas = (numeroPersonas > 0) ? numeroPersonas - personaEliminada : 0;
+    }
 }

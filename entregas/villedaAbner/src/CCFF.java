@@ -11,12 +11,19 @@ public class CCFF {
 
     public void simular() {
         Mapa mapa = new Mapa();
-        
 
-        for(int tiempoTranscurrido = 0; tiempoTranscurrido < TIEMPO_TOTAL; tiempoTranscurrido++){
+        for (int tiempoTranscurrido = 0; tiempoTranscurrido < TIEMPO_TOTAL; tiempoTranscurrido++) {
             mapa.proyectar();
-            if(fila.llegaPersona()){
+            if (fila.llegaPersona()) {
                 fila.recibePersona(1);
+            }
+            for (int i = 0; i < 3; i++) {
+                if(cajas[i].estaVacia()){
+                    fila.eliminaPersona(1);
+                    cajas[i].recibePersona(1);
+                }else{
+                    cajas[i].intentarVaciar();
+                }
             }
         }
 
