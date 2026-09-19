@@ -19,10 +19,8 @@ public class Caja {
         return personasAtendidas;
     }
 
-    public void intentarVaciar() {
-        if (Math.random() < 0.4) {
+    public void vaciarCaja() {
             ocupada = false;
             personasAtendidas++;
-        }
     }
 }
