@@ -17,4 +17,8 @@ public class Fila {
     public void eliminaPersona(int personaEliminada) {
         numeroPersonas = (numeroPersonas > 0) ? numeroPersonas - personaEliminada : 0;
     }
+
+    public int getNumeroPersonas() {
+        return numeroPersonas;
+    }
 }

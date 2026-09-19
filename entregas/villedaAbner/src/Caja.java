@@ -1,22 +1,28 @@
 public class Caja {
+    private int personasAtendidas;
+    private boolean ocupada;
+
+    public Caja() {
+        personasAtendidas = 0;
+        ocupada = false;
+    }
 
     public boolean estaVacia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'estaVacia'");
+        return !ocupada;
     }
 
-    public void recibePersona(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'recibePersona'");
+    public void recibePersona() {
+        ocupada = true; 
     }
 
-    
-    public int getPersonasAtendidas(){
-        return 1;
+    public int getPersonasAtendidas() {
+        return personasAtendidas;
     }
 
     public void intentarVaciar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'intentarVaciar'");
+        if (Math.random() < 0.4) {
+            ocupada = false;
+            personasAtendidas++;
+        }
     }
 }
