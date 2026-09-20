@@ -1,6 +1,6 @@
 public class Mapa {
 
-    // Ahora recibe el objeto Fila en lugar de un int
+    
     public void proyectar(int minuto, Fila fila, Caja[] cajas) {
         System.out.println("Minuto: " + (minuto + 1)); 
         System.out.println("------------------------------------------------");
@@ -8,11 +8,11 @@ public class Mapa {
         System.out.print("Fila: ");
         
         for (int i = 0; i < fila.getNumeroPersonas(); i++) {
-            // Preguntamos si el cliente en esta posición es VIP
+            
             if (fila.getCliente(i).esPreferente()) {
-                System.out.print("(V) "); // VIP
+                System.out.print("(V) "); 
             } else {
-                System.out.print("\\o/ "); // Mortal Normal
+                System.out.print("\\o/ ");
             }
         }
         System.out.println("\n(Total formados: " + fila.getNumeroPersonas() + ")"); 
@@ -30,7 +30,7 @@ public class Mapa {
         System.out.println("\n");
     }
 
-    // Nuevo método para lanzar mensajes de la matriz
+    
     public void imprimirEvento(String mensaje) {
         System.out.println(">>> EVENTO: " + mensaje + " <<<");
     }
