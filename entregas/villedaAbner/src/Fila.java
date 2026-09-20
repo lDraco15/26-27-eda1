@@ -7,6 +7,7 @@ public class Fila {
     public Fila() {
         filaClientes = new Cliente[35];
         cantidadActualPersonas = 0;
+        
     }
 
     public boolean llegaCliente() {
@@ -14,9 +15,25 @@ public class Fila {
     }
 
     public void recibePersona(Cliente clienteRecibido) {
+        int personasVipTotal = 0;
         if (cantidadActualPersonas < MAXIMO_PERSONAS_LINEA) {
             filaClientes[cantidadActualPersonas] = clienteRecibido;
             cantidadActualPersonas++;
+        }
+        if (clienteRecibido.esPreferente()) {
+            for (int i = 0; i < cantidadActualPersonas - 1; i++) {
+                if (!filaClientes[i].esPreferente()) {
+                    break;
+                }
+                personasVipTotal++;
+            }
+            
+            for (int i = cantidadActualPersonas; i > personasVipTotal; i--) {
+                filaClientes[i] = filaClientes[i - 1];
+            }
+            filaClientes[personasVipTotal] = clienteRecibido;
+
+
         }
     }
 
@@ -43,7 +60,7 @@ public class Fila {
         if (filaClientes[posicion].getMinutoLlegada() > 8) {
             return Math.random() < 0.3;
 
-        }else{
+        } else {
             return false;
         }
     }
@@ -54,6 +71,10 @@ public class Fila {
         }
         cantidadActualPersonas--;
         filaClientes[cantidadActualPersonas] = null;
+
+    }
+
+    public void priorizarPersona() {
 
     }
 }
