@@ -6,6 +6,9 @@ public class CCFF {
     final private int TIEMPO_TOTAL = 240;
     private int totalPersonasAtendidas;
     final private double PROBABILIDAD_DE_SALIDA = 0.4;
+    int totalVips = 0;
+    int totalColados = 0;
+    int totalAburridos = 0;
 
     public CCFF() {
         cajas = new Caja[4];
@@ -29,6 +32,7 @@ public class CCFF {
                 for (int i = 0; i < fila.getNumeroPersonas(); i++) {
                     if (fila.estaAburrido(i)) {
                         fila.clienteSaleFila(i);
+                        totalAburridos++;
                         i--;
                     }
                 }
@@ -38,6 +42,7 @@ public class CCFF {
                 boolean esVip = tiempoTranscurrido >= 20 ? RNG() < 0.1 : false;
                 int objetos = (int) (RNG() * 20) + 1;
                 Cliente nuevoCliente = new Cliente(tiempoTranscurrido, esVip, objetos);
+                if (nuevoCliente.esPreferente()) {totalVips++;}
                 fila.recibePersona(nuevoCliente);
 
             }
@@ -65,8 +70,7 @@ public class CCFF {
         for (int i = 0; i < cajas.length; i++) {
             totalPersonasAtendidas += cajas[i].getPersonasAtendidas();
         }
-        mapa.pantallaFinal(totalPersonasAtendidas, fila.getNumeroPersonas());
-
+mapa.pantallaFinal(totalPersonasAtendidas, fila.getNumeroPersonas(), totalVips, totalColados, totalAburridos);
     }
 
     private void evento(int tiempoTranscurrido, Mapa mapa) {
@@ -76,6 +80,7 @@ public class CCFF {
             int objetos = (int) (RNG() * 20) + 1;
             Cliente nuevoCliente = new Cliente(tiempoTranscurrido, esVip, objetos);
             fila.colarCliente(nuevoCliente);
+            totalColados++;
 
         }
     }

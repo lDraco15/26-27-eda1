@@ -35,11 +35,16 @@ public class Mapa {
         System.out.println(">>> EVENTO: " + mensaje + " <<<");
     }
     
-    public void pantallaFinal(int atendidos, int enFila) {
-        System.out.println("================================================");
-        System.out.println("--- RESULTADOS DE LA SIMULACIÓN (4 HORAS) ---");
-        System.out.println("Total de personas atendidas: " + atendidos);
-        System.out.println("Personas que quedaron en la fila: " + enFila);
-        System.out.println("================================================");
-    }
+    public void pantallaFinal(int atendidos, int enFila, int vips, int colados, int aburridos) {
+    System.out.println("================================================");
+    System.out.println("--- RESULTADOS DE LA SIMULACION (4 HORAS) ---");
+    System.out.println("Total de personas atendidas: " + atendidos);
+    System.out.println("Personas que quedaron en la fila: " + enFila);
+    System.out.println("------------------------------------------------");
+    System.out.println("Eventos especiales registrados:");
+    System.out.println("Clientes VIP acomodados: " + vips);
+    System.out.println("Colados sin vergüenza: " + colados);
+    System.out.println("Personas que se aburrieron y se fueron: " + aburridos);
+    System.out.println("================================================");
+}
 }
