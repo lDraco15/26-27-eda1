@@ -22,18 +22,38 @@ public class Fila {
 
     public void eliminaPersona(int personaEliminada) {
         filaClientes[0] = null;
-        for (int i = 0; i < cantidadActualPersonas - 1; i++) {
-                filaClientes[i] = filaClientes[i + 1];    
-        }
-        filaClientes[cantidadActualPersonas] = null;
-        cantidadActualPersonas--;
+        recorrerArray(0);
     }
 
     public int getNumeroPersonas() {
         return cantidadActualPersonas;
     }
 
-    public Cliente getCliente() {
-        return filaClientes[0];
+    public Cliente getCliente(int posicion) {
+        return filaClientes[posicion];
+    }
+
+    public void clienteSaleFila(int posicionCliente) {
+        filaClientes[posicionCliente] = null;
+        recorrerArray(posicionCliente);
+
+    }
+
+    public boolean estaAburrido(int posicion) {
+        if (filaClientes[posicion].getMinutoLlegada() > 8) {
+            return Math.random() < 0.3;
+
+        }else{
+            return false;
+        }
+    }
+
+    private void recorrerArray(int posicionARecorrer) {
+        for (int i = posicionARecorrer; i < cantidadActualPersonas - 1; i++) {
+            filaClientes[i] = filaClientes[i + 1];
+        }
+        cantidadActualPersonas--;
+        filaClientes[cantidadActualPersonas] = null;
+
     }
 }

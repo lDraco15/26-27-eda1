@@ -13,7 +13,6 @@ public class CCFF {
             cajas[i] = new Caja();
         }
         fila = new Fila();
-        
 
     }
 
@@ -23,6 +22,15 @@ public class CCFF {
         for (int tiempoTranscurrido = 0; tiempoTranscurrido < TIEMPO_TOTAL; tiempoTranscurrido++) {
 
             mapa.proyectar(tiempoTranscurrido, fila.getNumeroPersonas(), cajas);
+
+            if (tiempoTranscurrido % 5 == 0 ) {
+                for(int i=0; i < fila.getNumeroPersonas(); i++){
+                    if(fila.estaAburrido(i)){
+                        fila.clienteSaleFila(i);
+                        i--;
+                    }
+                }
+            }
 
             if (fila.llegaCliente()) {
                 boolean esVip = RNG() < 0.1;
@@ -40,11 +48,15 @@ public class CCFF {
                 }
 
             }
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < cajas.length; i++) {
                 if (cajas[i].estaVacia() && fila.getNumeroPersonas() > 0) {
                     fila.eliminaPersona(1);
                     cajas[i].recibePersona();
                 }
+            }
+
+            for(int i = 0; i < fila.getNumeroPersonas(); i++){
+                fila.getCliente(i).aumentarMinuto();
             }
 
         }
@@ -55,8 +67,7 @@ public class CCFF {
 
     }
 
-
-    private double RNG(){
+    private double RNG() {
         return Math.random();
     }
 }
