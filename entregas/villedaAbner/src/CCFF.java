@@ -23,9 +23,9 @@ public class CCFF {
 
             mapa.proyectar(tiempoTranscurrido, fila.getNumeroPersonas(), cajas);
 
-            if (tiempoTranscurrido % 5 == 0 ) {
-                for(int i=0; i < fila.getNumeroPersonas(); i++){
-                    if(fila.estaAburrido(i)){
+            if (tiempoTranscurrido % 5 == 0 && tiempoTranscurrido >= 20) {
+                for (int i = 0; i < fila.getNumeroPersonas(); i++) {
+                    if (fila.estaAburrido(i)) {
                         fila.clienteSaleFila(i);
                         i--;
                     }
@@ -33,7 +33,7 @@ public class CCFF {
             }
 
             if (fila.llegaCliente()) {
-                boolean esVip = RNG() < 0.1;
+                boolean esVip = tiempoTranscurrido >= 20 ? RNG() < 0.1 : false;
                 int objetos = (int) (RNG() * 20) + 1;
                 Cliente nuevoCliente = new Cliente(tiempoTranscurrido, esVip, objetos);
                 fila.recibePersona(nuevoCliente);
@@ -55,7 +55,7 @@ public class CCFF {
                 }
             }
 
-            for(int i = 0; i < fila.getNumeroPersonas(); i++){
+            for (int i = 0; i < fila.getNumeroPersonas(); i++) {
                 fila.getCliente(i).aumentarMinuto();
             }
 
