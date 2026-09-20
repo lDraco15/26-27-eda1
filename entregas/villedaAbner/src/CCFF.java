@@ -2,6 +2,7 @@ public class CCFF {
 
     private Caja[] cajas;
     private Fila fila;
+    private Cliente[] filaClientes;
     final private int TIEMPO_TOTAL = 240;
     private int totalPersonasAtendidas;
     final private double PROBABILIDAD_DE_SALIDA = 0.4;
@@ -12,6 +13,8 @@ public class CCFF {
             cajas[i] = new Caja();
         }
         fila = new Fila();
+        
+
     }
 
     public void simular() {
@@ -21,10 +24,14 @@ public class CCFF {
 
             mapa.proyectar(tiempoTranscurrido, fila.getNumeroPersonas(), cajas);
 
-            if (fila.llegaPersona()) {
-                fila.recibePersona(1);
+            if (fila.llegaCliente()) {
+                boolean esVip = RNG() < 0.1;
+                int objetos = (int) (RNG() * 20) + 1;
+                Cliente nuevoCliente = new Cliente(tiempoTranscurrido, esVip, objetos);
+                fila.recibePersona(nuevoCliente);
+
             }
-            if (Math.random() < PROBABILIDAD_DE_SALIDA) {
+            if (RNG() < PROBABILIDAD_DE_SALIDA) {
                 for (int i = 0; i < cajas.length; i++) {
                     if (!cajas[i].estaVacia()) {
                         cajas[i].vaciarCaja();
@@ -46,5 +53,10 @@ public class CCFF {
         }
         mapa.pantallaFinal(totalPersonasAtendidas, fila.getNumeroPersonas());
 
+    }
+
+
+    private double RNG(){
+        return Math.random();
     }
 }
