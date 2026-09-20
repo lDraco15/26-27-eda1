@@ -7,7 +7,7 @@ public class Fila {
     public Fila() {
         filaClientes = new Cliente[35];
         cantidadActualPersonas = 0;
-        
+
     }
 
     public boolean llegaCliente() {
@@ -27,12 +27,11 @@ public class Fila {
                 }
                 personasVipTotal++;
             }
-            
+
             for (int i = cantidadActualPersonas; i > personasVipTotal; i--) {
                 filaClientes[i] = filaClientes[i - 1];
             }
             filaClientes[personasVipTotal] = clienteRecibido;
-
 
         }
     }
@@ -74,7 +73,22 @@ public class Fila {
 
     }
 
-    public void priorizarPersona() {
+    public void colarCliente(Cliente clienteColado) {
+        if (cantidadActualPersonas >= MAXIMO_PERSONAS_LINEA)
+            return;
+        if (cantidadActualPersonas == 0) {
+            filaClientes[0] = clienteColado;
+            cantidadActualPersonas++;
+            return;
+        }
+        int posicionAmigo = (int) (Math.random() * cantidadActualPersonas);
+        int posicionDestino = posicionAmigo + 1;
+
+        for (int i = cantidadActualPersonas; i > posicionDestino; i--) {
+            filaClientes[i] = filaClientes[i - 1];
+        }
+        filaClientes[posicionDestino] = clienteColado;
+        cantidadActualPersonas++;
 
     }
 }

@@ -21,9 +21,11 @@ public class CCFF {
 
         for (int tiempoTranscurrido = 0; tiempoTranscurrido < TIEMPO_TOTAL; tiempoTranscurrido++) {
 
-            mapa.proyectar(tiempoTranscurrido, fila.getNumeroPersonas(), cajas);
+            mapa.proyectar(tiempoTranscurrido, fila, cajas);
+            evento(tiempoTranscurrido, mapa);
 
             if (tiempoTranscurrido % 5 == 0 && tiempoTranscurrido >= 20) {
+                mapa.imprimirEvento("¡Un cliente se aburrió de esperar y se fue!");
                 for (int i = 0; i < fila.getNumeroPersonas(); i++) {
                     if (fila.estaAburrido(i)) {
                         fila.clienteSaleFila(i);
@@ -65,6 +67,17 @@ public class CCFF {
         }
         mapa.pantallaFinal(totalPersonasAtendidas, fila.getNumeroPersonas());
 
+    }
+
+    private void evento(int tiempoTranscurrido, Mapa mapa) {
+        if (RNG() < 0.1 && tiempoTranscurrido >= 20) {
+            mapa.imprimirEvento("¡Alguien se acaba de colar en la fila!");
+            boolean esVip = false;
+            int objetos = (int) (RNG() * 20) + 1;
+            Cliente nuevoCliente = new Cliente(tiempoTranscurrido, esVip, objetos);
+            fila.colarCliente(nuevoCliente);
+
+        }
     }
 
     private double RNG() {
