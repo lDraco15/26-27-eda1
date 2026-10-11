@@ -32,15 +32,16 @@ class MiListaSimulada {
         numeroElementos++;
     }
 
-    public void apilarElemento(int elemento){
+    public void apilarElemento(int elemento) {
         if (arrayEstaLleno()) {
             expandirArray();
         }
 
-        for (int i = numeroElementos; i >= 0; i--) {
+        for (int i = numeroElementos - 1; i >= 0; i--) {
             lista[i + 1] = lista[i];
         }
         lista[0] = elemento;
+        numeroElementos++;
     }
 
     private void expandirArray() {
