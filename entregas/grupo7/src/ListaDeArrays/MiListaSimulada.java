@@ -44,6 +44,18 @@ class MiListaSimulada {
         numeroElementos++;
     }
 
+    public void deColar() {
+        lista[numeroElementos - 1] = 0;
+        numeroElementos--;
+    }
+
+    public void dePilar() {
+        for (int i = 1; i < numeroElementos; i++) {
+            lista[i - 1] = lista[i];
+        }
+        numeroElementos--;
+    }
+
     private void expandirArray() {
         capacidad = (int) (capacidad * 1.5);
         int[] nuevaLista = new int[capacidad];
