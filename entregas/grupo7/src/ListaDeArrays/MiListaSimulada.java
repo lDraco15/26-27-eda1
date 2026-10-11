@@ -56,6 +56,27 @@ class MiListaSimulada {
         numeroElementos--;
     }
 
+    public void insertarEn(int posicion, int valor) {
+        if (arrayEstaLleno()) {
+            expandirArray();
+        }
+
+        for (int i = numeroElementos - 1; i >= posicion; i--) {
+            lista[i + 1] = lista[i];
+        }
+
+        lista[posicion] = valor;
+        numeroElementos++;
+    }
+
+    public void eliminarEn(int posicion) {
+        for (int i = posicion; i < numeroElementos - 1; i++) {
+            lista[i] = lista[i + 1];
+        }
+
+        numeroElementos--;
+    }
+
     private void expandirArray() {
         capacidad = (int) (capacidad * 1.5);
         int[] nuevaLista = new int[capacidad];
