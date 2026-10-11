@@ -2,6 +2,7 @@ class MiListaSimulada {
 
     int capacidad;
     int[] lista;
+    int numeroElementos;
 
     public MiListaSimulada() {
         capacidad = 10;
@@ -13,7 +14,9 @@ class MiListaSimulada {
     }
 
     public int getCola() {
-        return lista[capacidad - 1];
+        return lista[numeroElementos-1];
+
+        
     }
 
     public int getEnMedio() {
@@ -21,5 +24,7 @@ class MiListaSimulada {
 
         return lista[numeroMedio];
     }
+
+
 
 }
