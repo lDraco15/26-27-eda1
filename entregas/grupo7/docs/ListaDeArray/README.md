@@ -13,14 +13,13 @@ El objetivo es **simular el comportamiento de una lista** utilizando un array: u
 ## Parte 1: Identificación de diferencias
 
 <div align=center>
-
-    |Característica|Array (comportamiento real)|Lista (comportamiento esperado)|¿Qué habría que simular o emular?|
-    |-|:-:|:-:|-|
-    |**Tamaño**|Fijo|Variable|Habria que simular un array variable, es decir dinamico|
-    |**Inserción**|No permitida|Permitida en cualquier posición|simular un metodo para insertar en la posicion deseada|
-    |**Eliminación**|No permitida|Permitida en cualquier posición|simular un metodo para eliminar en la posicion deseada|
-    |**Espacio libre**|No considerado|Puede existir implícitamente|simular la lista para que no consuma espacio, sin embargo los espacios restantes del array quedaran vacios|
-    |**Acceso**|Directo por índice|Directo o secuencial|simular un metodo para acceder al elemento esperado|
+|Característica|Array (comportamiento real)|Lista (comportamiento esperado)|¿Qué habría que simular o emular?|
+|-|:-:|:-:|-|
+|**Tamaño**|Fijo|Variable|Habria que simular un array variable, es decir dinamico|
+|**Inserción**|No permitida|Permitida en cualquier posición|simular un metodo para insertar en la posicion deseada|
+|**Eliminación**|No permitida|Permitida en cualquier posición|simular un metodo para eliminar en la posicion deseada|
+|**Espacio libre**|No considerado|Puede existir implícitamente|simular la lista para que no consuma espacio, sin embargo los espacios restantes del array quedaran vacios|
+|**Acceso**|Directo por índice|Directo o secuencial|simular un metodo para acceder al elemento esperado|
 
 </div>
 
