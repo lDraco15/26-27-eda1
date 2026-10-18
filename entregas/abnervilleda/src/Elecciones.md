@@ -2,7 +2,9 @@
 El ejercicio de las elecciones lo planteo de la siguiente forma: array de objetos "candidato" que guarde el número de votos en cada objeto creado.
 
 # Justificación
-- Veo un array de objetos de tipo "candidato" que cada uno guarde sus propios votos, al inicializar el array, la cantidad de objetos será el número de candidatos, luego el programa automáticamente asignará dos espacios de memoria para almacenar los votos nulos y las abstenciones en dos objetos de tipo "candidato" para su respectivo conteo. Un problema de esta solución es preguntarse: ¿el voto blanco y el voto nulo son candidatos? 
+- Al inicializar el sistema, el tamaño del array será exactamente el número de participantes (escalable a N candidatos). Cada posición guardará un objeto con la información exclusiva de un participante real, aprovechando la velocidad de acceso de los arreglos.
 
-- Si los votos en blanco y nulo son candidatos el programa funciona correctamente.
-- Si los votos en blanco y nulo no son candidatos el programa debe tener su propio contador de votos blancos y nulos ya que son estados fijos a diferencia de los candidatos que exige un nombre.
+- Como el voto en blanco y nulo no es un "candidato", realizar un objeto de tipo candidato es romper el principio de "es un" ya que un voto nulo no es un candidato, la solución mas práctica es la de realizar un contador global "int votosBlancos" y al terminar la simulación llamar esa variable para contar los votos.
+
+# Planteamiento del problema
+-El programa funcionará de la siguiente manera: se pedirá el número de votantes totales y el número de candidatos que entrarán a la votación. Luego a cada candidato se le asignará el nombre que pida el usuario y se crearán los objetos. Al momento de votar, se llamará a una función recibirVoto() que añadirá +1 voto al candidato seleccionado en su variable int cantidadVotos. Si se vota nulo/blanco, se sumará al contador global previamente mencionado. Al finalizar, se sumarán todos los votos registrados; si la suma coincide con la variable global numeroDeVotosTotales, el programa arrojará el resultado. En caso contrario, alertará sobre una inconsistencia en los datos.
