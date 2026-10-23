@@ -6,4 +6,6 @@ class NodoAlumno {
         this.alumno = alumno;
         this.siguiente = null;
     }
+
+     
 }
