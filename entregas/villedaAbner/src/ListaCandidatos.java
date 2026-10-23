@@ -6,8 +6,8 @@ public class ListaCandidatos {
     }
 
     public void agregarCandidato(Alumno candidato) {
-        Candidato nuevoCandidato = new Candidato(candidato);
         if (candidato.estaPresente) {
+            Candidato nuevoCandidato = new Candidato(candidato);
             if (cabeza == null) {
                 cabeza = new NodoCandidato(nuevoCandidato);
             } else {
@@ -41,5 +41,19 @@ public class ListaCandidatos {
                 }
             }
         }
+    }
+
+    public boolean sumarVotoA(String nombreBuscado) {
+        NodoCandidato actual = cabeza;
+
+        while (actual != null) {
+            if (actual.candidato.nombreCandidato.equals(nombreBuscado)) {
+                actual.candidato.darVoto(); 
+                return true; 
+            }
+            actual = actual.siguiente;
+        }
+
+        return false; 
     }
 }
