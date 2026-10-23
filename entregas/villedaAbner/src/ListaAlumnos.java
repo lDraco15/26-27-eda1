@@ -40,6 +40,7 @@ class ListaAlumnos {
             if (actual != null) {
                 anterior.siguiente = actual.siguiente;
             }
+            numeroDeAlumnos--;
         }
     }
 }
