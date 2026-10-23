@@ -7,16 +7,18 @@ public class ListaCandidatos {
 
     public void agregarCandidato(Alumno candidato) {
         Candidato nuevoCandidato = new Candidato(candidato);
-        if (cabeza == null) {
-            cabeza = new NodoCandidato(nuevoCandidato);
-        } else {
-            NodoCandidato actual = cabeza;
+        if (candidato.estaPresente) {
+            if (cabeza == null) {
+                cabeza = new NodoCandidato(nuevoCandidato);
+            } else {
+                NodoCandidato actual = cabeza;
 
-            while (actual.siguiente != null) {
-                actual = actual.siguiente;
+                while (actual.siguiente != null) {
+                    actual = actual.siguiente;
+                }
+
+                actual.siguiente = new NodoCandidato(nuevoCandidato);
             }
-
-            actual.siguiente = new NodoCandidato(nuevoCandidato);
 
         }
     }
