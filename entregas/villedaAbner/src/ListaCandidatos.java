@@ -1,9 +1,43 @@
 public class ListaCandidatos {
     private NodoCandidato cabeza;
 
-    public ListaCandidatos(){
+    public ListaCandidatos() {
         this.cabeza = null;
     }
 
-    
+    public void agregarCandidato(Alumno candidato) {
+        Candidato nuevoCandidato = new Candidato(candidato);
+        if (cabeza == null) {
+            cabeza = new NodoCandidato(nuevoCandidato);
+        } else {
+            NodoCandidato actual = cabeza;
+
+            while (actual.siguiente != null) {
+                actual = actual.siguiente;
+            }
+
+            actual.siguiente = new NodoCandidato(nuevoCandidato);
+
+        }
+    }
+
+    public void eliminarCandidato(Candidato candidatoAEliminar) {
+        if (cabeza != null) {
+            if (cabeza.candidato.equals(candidatoAEliminar)) {
+                cabeza = cabeza.siguiente;
+            } else {
+                NodoCandidato actual = cabeza;
+                NodoCandidato anterior = null;
+
+                while (actual != null && !actual.candidato.equals(candidatoAEliminar)) {
+                    anterior = actual;
+                    actual = actual.siguiente;
+                }
+
+                if (actual != null) {
+                    anterior.siguiente = actual.siguiente;
+                }
+            }
+        }
+    }
 }

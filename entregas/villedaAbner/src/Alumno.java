@@ -1,6 +1,6 @@
 public class Alumno {
     
-    private String nombre;
+    public String nombre;
     
 
     public Alumno(String nombre){
