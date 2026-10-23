@@ -5,6 +5,7 @@ public class Elecciones {
         ListaCandidatos candidatos = new ListaCandidatos();
         ColaUrna urna = new ColaUrna();
         int votosBlancosONulos = 0;
+        int totalVotosEmitidos = 0;
 
         Alumno juan = new Alumno("Juan");
         Alumno maria = new Alumno("Maria");
@@ -44,6 +45,7 @@ public class Elecciones {
         urna.encolar(votoDeHercules);
 
         Voto votoActual = urna.desencolar();
+        totalVotosEmitidos++;
 
         while (votoActual != null) {
             boolean votoValido = candidatos.sumarVotoA(votoActual.intencionVoto);
@@ -52,11 +54,12 @@ public class Elecciones {
                 votosBlancosONulos++;
             }
             votoActual = urna.desencolar();
+            totalVotosEmitidos++;
         }
 
-        System.out.println("Fin de la simulacion: ");
+        int abstencion = presentes.contarPresentes() - totalVotosEmitidos;
+        System.out.println("Abstenciones (no votaron): " + abstencion);
 
-        while(candidatos)
-
+        candidatos.calcularGanador();
     }
 }

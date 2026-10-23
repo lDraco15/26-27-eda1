@@ -48,12 +48,37 @@ public class ListaCandidatos {
 
         while (actual != null) {
             if (actual.candidato.nombreCandidato.equals(nombreBuscado)) {
-                actual.candidato.darVoto(); 
-                return true; 
+                actual.candidato.darVoto();
+                return true;
             }
             actual = actual.siguiente;
         }
 
-        return false; 
+        return false;
+    }
+
+
+    public void calcularGanador() {
+        NodoCandidato actual = cabeza;
+        int maxVotos = -1;
+        boolean hayEmpate = false;
+        String nombreGanador = "";
+
+        while (actual != null) {
+            if (actual.candidato.cantidadDeVotos > maxVotos) {
+                maxVotos = actual.candidato.cantidadDeVotos;
+                nombreGanador = actual.candidato.nombreCandidato;
+                hayEmpate = false;
+            } else if (actual.candidato.cantidadDeVotos == maxVotos) {
+                hayEmpate = true;
+            }
+            actual = actual.siguiente;
+        }
+
+        if (hayEmpate) {
+            System.out.println("El resultado es un EMPATE con " + maxVotos + " votos.");
+        } else {
+            System.out.println("El ganador es " + nombreGanador + " con " + maxVotos + " votos.");
+        }
     }
 }
