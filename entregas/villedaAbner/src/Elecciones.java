@@ -45,7 +45,7 @@ public class Elecciones {
         urna.encolar(votoDeHercules);
 
         Voto votoActual = urna.desencolar();
-        totalVotosEmitidos++;
+        
 
         while (votoActual != null) {
             boolean votoValido = candidatos.sumarVotoA(votoActual.intencionVoto);
